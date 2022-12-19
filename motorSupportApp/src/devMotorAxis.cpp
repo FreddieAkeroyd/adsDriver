@@ -425,7 +425,7 @@ asynStatus devMotorAxis::poll(bool *moving) {
 
 	// Set the MSTA bits
 	setIntegerParam(pC_->motorStatusHomed_, st_axis_status.bHomed);
-	//setIntegerParam(pC_->motorStatusProblem_, st_axis_status.bError);
+	setIntegerParam(pC_->motorStatusProblem_, st_axis_status.bError);
 	setIntegerParam(pC_->motorStatusLowLimit_, !st_axis_status.bLimitBwd);
 	setIntegerParam(pC_->motorStatusHighLimit_, !st_axis_status.bLimitFwd);
 	setIntegerParam(pC_->motorStatusPowerOn_, st_axis_status.bEnable);
