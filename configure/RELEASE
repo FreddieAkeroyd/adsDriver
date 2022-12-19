@@ -7,7 +7,7 @@
 ASYN=$(SUPPORT)/asyn/master
 AUTOPARAM=$(SUPPORT)/autoparamDriver/master
 BOOST=$(EPICS_KIT_ROOT)/libraries/master/boost
-
+MOTOR=$(SUPPORT)/motor/master
 ## define ADSLIB to use external build of github Beckhoff ADS library 
 #ADSLIB=$(SUPPORT)/ADS/master
 
