@@ -6,9 +6,9 @@
 #include <Variable.h>
 #include <autoparamHandler.h>
 #include <err.h>
-#ifdef USE_BUNDLED_ADS
+#ifndef USE_TC_ADS
 #include <standalone/AdsDef.h>
-#endif /* USE_BUNDLED_ADS */
+#endif /* USE_TC_ADS */
 #include <Connection.h>
 #include <chrono>
 #include <cstddef>
@@ -97,7 +97,7 @@ ADSPortDriver::ADSPortDriver(
                                       .setAutoConnect(true)
                                       .setAutoDestruct()
                                       .setInitHook(initHook)),
-      portName(portName), ipAddr(ipAddr), amsNetId({0, 0, 0 ,0 ,0 ,0}),
+      portName(portName), ipAddr(ipAddr), amsNetId{0, 0, 0 ,0 ,0 ,0},
       sumBufferSize(sumBufferSize), adsFunctionTimeout(adsFunctionTimeout),
       deviceReadAdsPort(deviceReadAdsPort),  adsConnection(new Connection()),
       SumRead(sumBufferSize, adsConnection),
@@ -112,7 +112,7 @@ ADSPortDriver::ADSPortDriver(
         this->amsNetId.b[i] = atoi(split_ams[i].c_str());
     }
 #else
-    this.amsNetId = amsNetId;
+    this->amsNetId = std::string(amsNetId);
 #endif
 
     // scalars
